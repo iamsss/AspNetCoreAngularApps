@@ -5,6 +5,9 @@
     >> dotnet restore
 
 
-    ### For Adding Initial Migration ###
+### For Adding Initial Migration ###
 
     >> dotnet ef migrations add InitialModel
+    >> dotnet ef migrations remove
+    >> dotnet ef migrations add InitialModel
+    >> dotnet ef database update
