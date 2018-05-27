@@ -21,3 +21,7 @@
 
     >> dotnet ef migrations add ApplyConstrains
     >> dotnet ef database update
+
+### Seeding database
+    >>  dotnet ef migrations add SeedDatabase
+    >> dotnet ef database update
