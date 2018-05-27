@@ -23,5 +23,9 @@
     >> dotnet ef database update
 
 ### Seeding database
-    >>  dotnet ef migrations add SeedDatabase
+    >> dotnet ef migrations add SeedDatabase
+    >> dotnet ef database update
+
+### Downgrade the database to ApplyConstrains
+    >> dotnet ef database update ApplyConstrains
     >> dotnet ef database update
