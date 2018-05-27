@@ -16,3 +16,8 @@
 ### Removing The Updated database
     >> dotnet ef database update 0
     >> dotnet ef migrations remove
+
+### Apply Constrain
+
+    >> dotnet ef migrations add ApplyConstrains
+    >> dotnet ef database update
