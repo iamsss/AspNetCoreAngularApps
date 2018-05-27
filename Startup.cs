@@ -20,7 +20,7 @@ namespace vega
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<VegaDbContext>(options => options.UseSqlServer("..")); // Registry as Dependency
+            services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default"))); // Registry as Dependency
             services.AddMvc();
 
             // In production, the Angular files will be served from this directory
