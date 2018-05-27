@@ -1,0 +1,2 @@
+>> We Should Never Remove the updated database rather we have to use another 
+   migration to overcome from Challenges

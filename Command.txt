@@ -11,3 +11,8 @@
     >> dotnet ef migrations remove
     >> dotnet ef migrations add InitialModel
     >> dotnet ef database update
+
+
+### Removing The Updated database
+    >> dotnet ef database update 0
+    >> dotnet ef migrations remove
