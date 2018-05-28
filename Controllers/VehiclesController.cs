@@ -1,4 +1,6 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using vega.Controllers.Resource;
 using vega.Models;
 
 namespace vega.Controllers
@@ -7,14 +9,17 @@ namespace vega.Controllers
     public class VehiclesController : Controller
     {
 
-        [HttpPost]
-        public IActionResult CreateVehicle([FromBody] Vehicle Vechile ) {
-            return Ok(Vechile);
+        private readonly IMapper mapper;
+        public VehiclesController(IMapper mapper)
+        {
+            this.mapper = mapper;
         }
 
-        [HttpGet]
-        public IActionResult GetVehicle(Vehicle Vechile ) {
-            return Ok("Sucess");
+        [HttpPost]
+        public IActionResult CreateVehicle([FromBody] VehicleResource vehicleResource)
+        {
+            var vehicle = mapper.Map<VehicleResource, Vehicle>(vehicleResource);
+            return Ok(vehicle);
         }
     }
 }
