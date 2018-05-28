@@ -38,6 +38,10 @@
     >> dotnet add package AutoMapper
     >> dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection
 
+### Creating new Component
+    >> cd ClientApp
+    >> ng g component vechile-form
+
 
 
 
