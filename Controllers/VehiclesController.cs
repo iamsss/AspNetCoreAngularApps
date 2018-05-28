@@ -23,16 +23,23 @@ namespace vega.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateVehicle([FromBody] VehicleResource vehicleResource)
         {
+            // Model Validation For DataAnnotations
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            // Businness Logic Validation
+            // if(true) {
+            //     ModelState.AddModelError("..","error");
+            //     return BadRequest(ModelState);
+            // }
             var vehicle = mapper.Map<VehicleResource, Vehicle>(vehicleResource);
 
             vehicle.LastUpdate = DateTime.Now;
-    
+
             context.Vehicles.Add(vehicle);
-            
             await context.SaveChangesAsync();
     
             var result = mapper.Map<Vehicle, VehicleResource>(vehicle);
-    
             return Ok(result);
         }
     }
