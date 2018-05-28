@@ -1,3 +1,4 @@
+import { MakeService } from './services/make.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -31,7 +32,7 @@ import { VechileFormComponent } from './vechile-form/vechile-form.component';
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [],
+  providers: [MakeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
