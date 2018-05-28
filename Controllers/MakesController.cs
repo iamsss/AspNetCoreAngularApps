@@ -36,10 +36,11 @@ namespace vega.Controllers
         }
 
         [HttpGet]
-        public List<MakeResource> GetAll()
+        public async Task<IEnumerable<MakeResource>> GetAll()
         {
-            var makes = context.Makes.ToList();
-            return mapper.Map<List<Make>, List<MakeResource>>(makes);
+           var makes = await context.Makes.Include(m => m.Models).ToListAsync();
+
+           return mapper.Map<List<Make>, List<MakeResource>>(makes);
         }
 
     }
