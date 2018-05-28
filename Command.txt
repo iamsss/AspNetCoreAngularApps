@@ -34,6 +34,11 @@
     >> dotnet restore
     >> dotnet watch run
 
+### Adding Auto Mapper
+    >> dotnet add package AutoMapper
+    >> dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection
+
+
 
 
 
