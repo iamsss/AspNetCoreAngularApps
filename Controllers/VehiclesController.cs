@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using vega.Controllers.Resource;
 using vega.Models;
-using vega.Persistence;
+using vega.Core;
 
 namespace vega.Controllers
 {
