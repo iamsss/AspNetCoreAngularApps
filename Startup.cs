@@ -22,6 +22,7 @@ namespace vega
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IVehicleRepository,VehicleRepository>(); // It Created Scope of Irespos for that request lifetime
+            services.AddScoped<IUnitOfWork,UnitOfWork>();
             services.AddAutoMapper();
             services.AddDbContext<VegaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default"))); // Registry as Dependency
             services.AddMvc();
