@@ -3,15 +3,12 @@ using System.Collections.ObjectModel;
 
 namespace vega.Controllers.Resource
 {
-    public class MakeResource
+    public class MakeResource : KeyValuePairResource
     {
-        public int Id { get; set; }
-  
-        public string Name { get; set; }
-        public ICollection<ModelResource> Models { get; set;}
+        public ICollection<KeyValuePairResource> Models { get; set;}
 
         public MakeResource() {
-        Models = new Collection<ModelResource>(); // Here we can use List as well as Collection
+        Models = new Collection<KeyValuePairResource>(); // Here we can use List as well as Collection
     }
 
     }

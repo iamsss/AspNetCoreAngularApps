@@ -12,8 +12,8 @@ namespace vega.Mapping
         {
             // Domain to Api Resources
             CreateMap<Make, MakeResource>();
-            CreateMap<Model, ModelResource>();
-            CreateMap<Feature, FeatureResource>();
+            CreateMap<Model, KeyValuePairResource>();
+            CreateMap<Feature, KeyValuePairResource>();
             CreateMap<Vehicle, SaveVehicleResource>()
             .ForMember(vr => vr.contact, opt => opt.MapFrom(v => new ContactResource { ContactName = v.ContactName, ContactEmail = v.ContactEmail, ContactPhone = v.ContactPhone }))
             .ForMember(vr => vr.Features, opt => opt.MapFrom(v => v.Features.Select(vf => vf.FeatureId)));
@@ -21,7 +21,7 @@ namespace vega.Mapping
               CreateMap<Vehicle, VehicleResource>()
              .ForMember(vr => vr.Make, opt => opt.MapFrom(v => v.Model.Make))
              .ForMember(vr => vr.contact, opt => opt.MapFrom(v => new ContactResource { ContactName = v.ContactName, ContactEmail = v.ContactEmail, ContactPhone = v.ContactPhone } ))
-             .ForMember(vr => vr.Features, opt => opt.MapFrom(v => v.Features.Select(vf => new FeatureResource { Id = vf.Feature.Id, Name = vf.Feature.Name })));
+             .ForMember(vr => vr.Features, opt => opt.MapFrom(v => v.Features.Select(vf => new KeyValuePairResource { Id = vf.Feature.Id, Name = vf.Feature.Name })));
  
 
 
@@ -32,7 +32,7 @@ namespace vega.Mapping
             .ForMember(v => v.ContactName, opt => opt.MapFrom(vr => vr.contact.ContactName))
             .ForMember(v => v.ContactEmail, opt => opt.MapFrom(vr => vr.contact.ContactEmail))
             .ForMember(v => v.ContactPhone, opt => opt.MapFrom(vr => vr.contact.ContactPhone))
-           .ForMember(v => v.Features, opt => opt.Ignore())
+               .ForMember(v => v.Features, opt => opt.Ignore())
               .AfterMap((vr, v) =>
               {
                   // Remove unselected features
