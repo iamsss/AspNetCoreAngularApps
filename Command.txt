@@ -43,7 +43,6 @@
     >> ng g component vechile-form
 
 
-
-
-
+### Adding Toast notification
+    >> npm install ng2-toasty
 
