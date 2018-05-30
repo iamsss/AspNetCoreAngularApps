@@ -1,5 +1,6 @@
 import { VehicleService } from './../services/vehicle.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
+import { ToastyService } from 'ng2-toasty';
 
 @Component({
   selector: 'app-vechile-form',
@@ -17,7 +18,9 @@ export class VechileFormComponent implements OnInit {
   };
   models: any[];
   features: any;
-  constructor(private vehicleService: VehicleService) { }
+  constructor(private vehicleService: VehicleService,
+  private toastyService: ToastyService,
+private ngZone : NgZone) { }
 
  
 
@@ -45,7 +48,28 @@ export class VechileFormComponent implements OnInit {
 
           submit() {
                 this.vehicleService.create(this.vehicle)
-                  .subscribe(x => console.log(x));
+                  .subscribe(x =>  {
+                    this.toastyService.success({
+                      title: "Toast It!",
+                      msg: "Data Sent Sucessfully",
+                      showClose: true,
+                      timeout: 5000,
+                      theme: "material"
+                  });
+                  },err => {
+                    console.log("Error");
+                    this.ngZone.run(() => {
+                      this.toastyService.error({
+                        title: "Toast It!",
+                        msg: "Some Error",
+                        showClose: true,
+                        timeout: 5000,
+                        theme: "material"
+                    });
+                    });
+                    
+                  }
+                );
             }
             
        

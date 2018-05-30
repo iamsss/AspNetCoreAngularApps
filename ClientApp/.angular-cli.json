@@ -19,9 +19,11 @@
       "prefix": "app",
       "styles": [
         "styles.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/ng2-toasty/bundles/style-default.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/ng2-toasty/bundles/index.umd.js" ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
