@@ -1,6 +1,7 @@
 using System.Linq;
 using AutoMapper;
 using vega.Controllers.Resource;
+using vega.Core.Models;
 using vega.Models;
 
 namespace vega.Mapping

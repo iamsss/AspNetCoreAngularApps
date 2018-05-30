@@ -4,6 +4,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using vega.Controllers.Resource;
+using vega.Core.Models;
 using vega.Models;
 using vega.Persistence;
 namespace vega.Controllers

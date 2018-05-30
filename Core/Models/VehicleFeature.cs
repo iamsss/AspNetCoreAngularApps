@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using vega.Core.Models;
 
 namespace vega.Models
 {
