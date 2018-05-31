@@ -2,6 +2,8 @@ import { VehicleService } from './../services/vehicle.service';
 import { Component, OnInit, NgZone } from '@angular/core';
 import { ToastyService } from 'ng2-toasty';
 import { ActivatedRoute, Router, Route } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/Observable/forkJoin';
 
 @Component({
   selector: 'app-vechile-form',
@@ -33,19 +35,22 @@ export class VechileFormComponent implements OnInit {
 
 
   ngOnInit() {
-    this.vehicleService.getVehicle(this.vehicle.id)
-      .subscribe(v => {
-        this.vehicle = v;
-      }, err => {
-        if (err.status == 404)
-          this.router.navigate(['/home']);
-      });
-    this.vehicleService.getMakes().subscribe(makes => {
-      this.makes = makes;
-      console.log("MAKES", this.makes);
+    var sources = [
+      this.vehicleService.getMakes(),
+      this.vehicleService.getFeatures(),
+    ];
+    if (this.vehicle.id)
+      sources.push(this.vehicleService.getVehicle(this.vehicle.id));
+
+    Observable.forkJoin(sources).subscribe(data => {
+      this.makes = data[0];
+      this.features = data[1];
+      if (this.vehicle.id)
+        this.vehicle = data[2];
+    }, err => {
+      if (err.status == 404)
+        this.router.navigate(['/home']);
     });
-    this.vehicleService.getFeatures().subscribe(features =>
-      this.features = features);
   }
   onMakeChange() {
     var selectedMake = this.makes.find(m => m.id == this.vehicle.makeId);
