@@ -29,6 +29,7 @@ import { VechileFormComponent } from './vechile-form/vechile-form.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
+      { path: 'vehicles/:id', component: VechileFormComponent },
       { path: 'counter', component: CounterComponent },
       { path: 'vehicles/new', component: VechileFormComponent },
       { path: 'fetch-data', component: FetchDataComponent },
