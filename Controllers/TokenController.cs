@@ -40,7 +40,8 @@ namespace vega.Controllers
         {
 
             var claims = new[] {
-        new Claim(ClaimTypes.Role, user.Role)
+        new Claim(ClaimTypes.Role, user.Role),
+         new Claim("Email", user.Email)
     };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

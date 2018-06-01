@@ -25,6 +25,7 @@ namespace vega.Controllers
         }
 
         [HttpGet("{id}"), Authorize(Roles = "Admin,Manager")]
+        [Authorize(Policy = "HaveEmail")]
         public async Task<IActionResult> GetVehicle(int id)
         {
             var vehicle = await repository.GetVehicle(id);
