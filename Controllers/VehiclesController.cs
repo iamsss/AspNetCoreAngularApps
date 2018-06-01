@@ -7,6 +7,7 @@ using vega.Controllers.Resource;
 using vega.Models;
 using vega.Core;
 using vega.Core.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace vega.Controllers
 {
@@ -23,7 +24,7 @@ namespace vega.Controllers
             this.mapper = mapper;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize]
         public async Task<IActionResult> GetVehicle(int id)
         {
             var vehicle = await repository.GetVehicle(id);
