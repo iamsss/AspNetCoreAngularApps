@@ -24,7 +24,7 @@ namespace vega.Controllers
             this.mapper = mapper;
         }
 
-        [HttpGet("{id}"), Authorize(Roles = "Admin")]
+        [HttpGet("{id}"), Authorize(Roles = "Admin,Manager")]
         public async Task<IActionResult> GetVehicle(int id)
         {
             var vehicle = await repository.GetVehicle(id);

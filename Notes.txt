@@ -1,2 +1,7 @@
 >> We Should Never Remove the updated database rather we have to use another 
    migration to overcome from Challenges
+>> JWT has no concept of logout, it's all in your hands, especially as you're also
+ the person doing the issuing. So, I guess, you could put a unique token ID in your claims,
+  and hold those in memory until the token they're attached to expires, and if you want to 
+  force logout roll that token, and then check it in the JWT TokenValidated event
+
