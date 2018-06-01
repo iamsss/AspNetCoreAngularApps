@@ -1,5 +1,6 @@
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -37,11 +38,16 @@ namespace vega.Controllers
 
         private string BuildToken(UserModel user)
         {
+
+            var claims = new[] {
+        new Claim(ClaimTypes.Role, user.Role)
+    };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(_config["Jwt:Issuer"],
               _config["Jwt:Issuer"],
+              claims,
               expires: DateTime.Now.AddMinutes(30),
               signingCredentials: creds);
 
@@ -54,7 +60,10 @@ namespace vega.Controllers
 
             if (login.Username == "mario" && login.Password == "secret")
             {
-                user = new UserModel { Name = "Mario Rossi", Email = "mario.rossi@domain.com" };
+                user = new UserModel { Name = "Mario Rossi", Email = "mario.rossi@domain.com" , Role = "Admin" };
+            }else if (login.Username == "saurav" && login.Password == "secret")
+            {
+                user = new UserModel { Name = "Mario Rossi", Email = "mario.rossi@domain.com" , Role = "Manager" };
             }
             return user;
         }
@@ -69,6 +78,7 @@ namespace vega.Controllers
         {
             public string Name { get; set; }
             public string Email { get; set; }
+            public string Role { get; set; }
             public DateTime Birthdate { get; set; }
         }
     }

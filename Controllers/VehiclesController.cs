@@ -24,7 +24,7 @@ namespace vega.Controllers
             this.mapper = mapper;
         }
 
-        [HttpGet("{id}"), Authorize]
+        [HttpGet("{id}"), Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetVehicle(int id)
         {
             var vehicle = await repository.GetVehicle(id);
@@ -82,7 +82,7 @@ namespace vega.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"),Authorize(Roles = "Manager")]
         public async Task<IActionResult> DeleteVehicle(int id)
         {
             var vehicle = await repository.GetVehicle(id, includeRelated: false);
