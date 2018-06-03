@@ -5,3 +5,4 @@
   and hold those in memory until the token they're attached to expires, and if you want to 
   force logout roll that token, and then check it in the JWT TokenValidated event
 
+>> Copy the file of \Debug\netcoreapp2.0\publish\ to disire location at server file

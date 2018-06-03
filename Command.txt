@@ -46,3 +46,15 @@
 ### Adding Toast notification
     >> npm install ng2-toasty
 
+### Deploying ASP.net Core Angular Apps 
+    >> cd ClientApp
+    >> ng build --extract-css "--prod"
+    >> cd .. 
+    >> dotnet publish
+
+### Upgrading EntityFramework
+
+    >> setx ASPNETCORE_ENVIRONMENT "Production"
+    >> dotnet ef database drop
+    >> dotnet ef migrations add InitialCreate
+    >> dotnet ef database update
